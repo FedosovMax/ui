@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import "./ContentMain.css";
-import ContentBar from "./ContentBar";
+import ContentBar from "../ContentBar/ContentBar";
 
 const ContentMain = ({ entry, columns, itemColumns, toggleShow, setEntry }) => {
   // const [show, setShow] = useState(false);

@@ -1,5 +1,5 @@
 import React from 'react';
-import LotsTable from './components/LotsTable';
+import LotsTable from './components/LotsTable/LotsTable';
 
 
 function App() {

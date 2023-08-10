@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderCell from "./HeaderCell";
+import HeaderCell from "../HeaderCell/HeaderCell";
 import "./Header.css";
 
 const Header = ({ columns, sorting, sortTable, searchTable, searchColumn }) => {

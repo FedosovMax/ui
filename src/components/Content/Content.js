@@ -1,7 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import "./Content.css";
-import ContentMain from "./ContentMain";
+import ContentMain from "../ContentMain/ContentMain";
 
 const Content = ({ entries, columns, itemColumns, toggleShow, setEntry }) => {
   console.log(entries);
