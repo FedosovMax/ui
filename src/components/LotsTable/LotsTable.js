@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import React from "react";
-import Header from "./Header";
-import Content from "./Content";
-import Pagination from "./Pagination";
-import ContentBar from "./ContentBar"
+import Header from "../Header/Header";
+import Content from "../Content/Content";
+import Pagination from "../Pagination/Pagination";
+import ContentBar from "../ContentBar/ContentBar"
 import "./LotsTable.css";
 
 const LotsTable = () => {

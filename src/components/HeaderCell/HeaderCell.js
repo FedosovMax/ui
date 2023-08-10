@@ -1,6 +1,6 @@
 import React from "react";
 import "./HeaderCell.css";
-import ColumnSearch from "./ColumnSearch";
+import ColumnSearch from "../ColumnSearch/ColumnSearch";
 
 const HeaderCell = ({ column, sorting, sortTable, searchTable, searchColumn }) => {
   const isDescSorting = sorting.column === column && sorting.order === "desc";

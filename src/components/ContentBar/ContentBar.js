@@ -1,35 +1,37 @@
 import { useState } from "react";
 import React from "react";
-import "./Content.css";
-import ContentItemHeader from "./ContentItemHeader";
+import "./ContentBar.css";
+import ContentItemHeader from "../ContentItemHeader/ContentItemHeader";
 
-const ContentItem = ({ entry, itemColumns}) => {
-  const [show, setShow] = useState(false);
-  const [tempId, setTempId] = useState();
+const ContentItem = ({ entry, itemColumns, tempId, showItems}) => {
+  // const [show, setShow] = useState(false);
+  // const [tempId, setTempId] = useState();
 
-  function toggleShow(id) {
-    setShow(!show);
-    setTempId(id);
-  }
+  // function toggleShow(id) {
+  //   setShow(!show);
+  //   setTempId(id);
+  // }
 
-  var buttonText = show ? "^" : "v";
+  // var buttonText = show ? "^" : "v";
 
   console.log(entry);
-  // console.log(entry.items);
+  console.log(entry.lotItems);
+  console.log(itemColumns)
+  console.log(tempId)
+  console.log(entry.id)
+  console.log(showItems)
 
   return (
     <>
-      <button className="item-button" onClick={() => toggleShow(entry.id)}>
-        {buttonText}
-      </button>
-      <ContentItemHeader
+      <div className="full-info-bar">
+      {/* <ContentItemHeader
         entry={entry}
         tempId={tempId}
         itemColumns={itemColumns}
-        showItems={show}
-      />
+        showItems={showItems}
+      />   */}
       <tr>
-        {show && tempId === entry.id ? (
+        {showItems && tempId === entry.id ? (
           <>
             {itemColumns.map((itemColumn) => (
               <td className="lots-table-cell8">
@@ -51,6 +53,7 @@ const ContentItem = ({ entry, itemColumns}) => {
           ""
         )}
       </tr>
+      </div>
     </>
   );
 };
