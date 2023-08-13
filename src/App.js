@@ -1,12 +1,10 @@
-import React from 'react';
-import LotsTable from './components/LotsTable/LotsTable';
-
+import {LotsTable} from "./pages/LotsTable";
 
 function App() {
   return (
-    <div>
-      <LotsTable />
-    </div>
+     <div>
+       <LotsTable/>
+     </div>
   );
 }
 
