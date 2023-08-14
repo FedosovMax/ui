@@ -2,6 +2,7 @@ import {AiFillCloseCircle, AiOutlineLink} from "react-icons/ai";
 import styles from "./styles.module.scss"
 import {BiUser} from "react-icons/bi";
 import {BsBuildings} from "react-icons/bs";
+import {Link} from "react-router-dom";
 
 export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 	if (lot.length < 0) {
@@ -32,7 +33,7 @@ export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 			 <div className={styles.lotUsers}>
 				 <h3>Учасники Лоту</h3>
 				 {lot.participantNames && lot.participantNames.map(item => (
-						<div>
+						<div key={item.id}>
 							<p><span><BiUser/> Імя:</span> {item.name}</p>
 							<p>Edrpou: {item.edrpou}</p>
 						</div>
@@ -42,10 +43,9 @@ export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 
 			 <div className={styles.links}>
 				 <h3><AiOutlineLink/> Силки:</h3>
-				 <p> Силка на лот : {lot.lotURL}</p>
-				 <p>Силка на pdf : {lot.pdfURL}</p>
+				 <p> Силка на лот : <Link to={lot.lotURL}> {lot.lotURL}</Link></p>
+				 <p>Силка на pdf : <Link to={lot.pdfURL}> {lot.pdfURL}</Link></p>
 			 </div>
-
 			 <div className={styles.burying}>
 				 <h3>Продукція: </h3>
 				 <div>
@@ -55,7 +55,7 @@ export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 					 <div>Ціна за все:</div>
 				 </div>
 				 {lot.lotItems && lot.lotItems.map(lotItem => (
-						<div>
+						<div key={lotItem.id}>
 							<p>{lotItem.model}</p>
 							<p> {lotItem.price} грн</p>
 							<p> {lotItem.amount}</p>

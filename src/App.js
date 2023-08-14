@@ -1,10 +1,11 @@
 import {LotsTable} from "./pages/LotsTable";
+import {Route, Routes} from "react-router-dom";
 
 function App() {
   return (
-     <div>
-       <LotsTable/>
-     </div>
+     <Routes>
+       <Route path="/" element={<LotsTable/>}/>
+     </Routes>
   );
 }
 
