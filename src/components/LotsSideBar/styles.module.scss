@@ -1,5 +1,5 @@
 .container {
-	width: 500px;
+	width: 530px;
 	height: 80vh;
 	background: #ffffff;
 	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
@@ -14,5 +14,43 @@
 		font-size: 2rem;
 		padding-right: 1rem;
 		cursor: pointer;
+	}
+	.buyer{
+		margin-bottom: 22px;
+		div{
+			font-size: 22px;
+			font-weight: bold;
+		}
+	}
+
+	.price{
+		span{
+			text-decoration: underline;
+		}
+		margin-bottom: 30px;
+	}
+
+	.lotUsers{
+		div{
+			font-size: 15px;
+		}
+		margin-bottom: 30px;
+	}
+
+	.links{
+		margin-bottom: 30px;
+	}
+	.burying{
+		div{
+			display: grid;
+
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: 1fr;
+			grid-column-gap: 15px;
+			grid-row-gap: 0;
+			font-size: 11px;
+			text-align: center;
+			line-height: 10px;
+		}
 	}
 }
