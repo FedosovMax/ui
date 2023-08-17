@@ -6,7 +6,7 @@ export const LotsService = {
 		const resultSearchBuyer = search && search.buyer ? search.buyer : ""
 		const resultSearchSeller = search && search.seller ? search.seller : ""
 		const resultSearchDk = search && search.dk ? search.dk : ""
-		const resultSearchLinkLot = search && search.buyer ? search.buyer : ""
+		const resultSearchLinkLot = search && search.lotURL ? search.lotURL : ""
 		const resultParticipants = search && search.participants ? search.participants : ""
 		const resultLotStatus = search && search.lotStatus ? search.lotStatus : ""
 		const sort = sorting.name !== "" ? `&sort=${sorting.name},${sorting.order}` : ""
@@ -24,6 +24,3 @@ export const LotsService = {
 	}
 
 }
-
-
-// ?sort=${sorting.name},${sorting.order}
