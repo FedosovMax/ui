@@ -1,61 +1,51 @@
 import styles from "./styles.module.scss";
 import {useState} from "react";
 import {useDebounce} from "../../hooks/useDebounce";
+import {TableMap} from "./TableMap";
 
 
-export const LotsFilters = ({setSearch}) => {
+export const LotsFilters = ({setSearch, setSorting, sorting}) => {
 	const [candidate, setCandidate] = useState({});
 
 	const debouncedCandidate = useDebounce(candidate, 300);
 
-	const editCandidate = (e)=>{
-		const {name,value}=e.target
+	const editCandidate = (e) => {
+		const {name, value} = e.target
 		const result = {
 			...candidate,
-			[name]:value
+			[name]: value
 		}
 		setCandidate(result)
 	}
-
+	console.log(candidate)
 	setSearch(debouncedCandidate)
+
+// totalPrice Lots max-min don`t forget
+
+	const columns = [
+		{name: "buyer", value: "Покупець", placeholder: "Введіть Покупця..."},
+		{name: "seller", value: "Продавець", placeholder: "Введіть Продавця..."},
+		{name: "lotStatus", value: "Статус Лота", placeholder: "Введіть Статус Лота..."},
+		{name: "dk", value: "Dk", placeholder: "Введіть дк..."},
+		{name: "lotURL", value: " Cилка на лот", placeholder: "Введіть силку на лот..."},
+	]
 
 
 	return (
 		 <div className={styles.container}>
-				<div className={styles.container__search}>
-					<label>
-						Покупець:
-						<input type="text" name={"buyer"} placeholder="Ведіть покупця..." onChange={editCandidate}/>
-					</label>
-				</div>
-			 <div className={styles.container__search}>
-				 <label>
-					 Продавець:
-					 <input type="text" name={"seller"} placeholder="Ведіть продавця..." onChange={editCandidate}/>
-				 </label>
-			 </div>
-			 <div className={styles.container__search}>
-				 <label>
-					 Dk:
-					 <input type="text" name={"dk"}  placeholder="Ведіть дк..." onChange={editCandidate}/>
-				 </label>
-			 </div>
-			 <div className={styles.container__search}>
-				 <label>
-					 Cилка на лот:
-					 <input type="text" name={"lotURL"} placeholder="Ведіть силку на лот..." onChange={editCandidate}/>
-				 </label>
-			 </div>
-
-			 <div className={styles.container__search}>
-				 <label>
-					 participants:
-					 <input type="text" name={"participants"} onChange={editCandidate} placeholder={"Введіть імена через кому..."}/>
-				 </label>
-			 </div>
-
-
+			 {
+				 columns.map((item) => (
+						<TableMap
+							 key={item.id}
+							 item={item}
+							 editCandidate={editCandidate}
+							 sorting={sorting}
+							 setSorting={setSorting}/>
+				 ))
+			 }
 		 </div>
 	);
 };
+
+
 

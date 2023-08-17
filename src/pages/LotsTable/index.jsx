@@ -17,12 +17,12 @@ export const LotsTable = () => {
 	const [totalPages, setTotalPages] = useState(0);
 	const [lot, setLot] = useState([]);
 	const [lots, setLots] = useState([]);
-
+	const [sorting, setSorting] = useState({name: "", order: ""});
 	const [search, setSearch] = useState({});
 
 	const fetchLots = async (currentPage) => {
 		try {
-			const response = await LotsService.getAllLots({currentPage,search});
+			const response = await LotsService.getAllLots({currentPage, search, sorting});
 			const {content, totalPages} = response.data;
 			setLots(content);
 			setTotalPages(totalPages);
@@ -34,8 +34,7 @@ export const LotsTable = () => {
 
 	useEffect(() => {
 		fetchLots(currentPage);
-	}, [currentPage, search]);
-
+	}, [currentPage, search, sorting]);
 
 
 	const toggleDisplay = () => {
@@ -54,7 +53,11 @@ export const LotsTable = () => {
 		 <>
 			 <div className={styles.wrapper}>
 				 <div className={styles.container}>
-					 <LotsFilters setSearch={setSearch}/>
+					 <LotsFilters
+							setSearch={setSearch}
+							setSorting={setSorting}
+							sorting={sorting}/>
+
 					 <ul className={styles.responsive_table}>
 						 <li className={styles.responsive_table__header}>
 							 <div className="col ">Покупець</div>
@@ -65,46 +68,46 @@ export const LotsTable = () => {
 							 <div className="col">Ціна</div>
 						 </li>
 						 {
-							 lots.length > 0 ? 							 (lots.map((item) => (
-								  <li
+							 lots.length > 0 ? (lots.map((item) => (
+									<li
 										 onClick={() => {
 											 toggleDisplay()
 											 setLot(item)
 										 }}
 										 key={item.id}
 										 className={styles.responsive_table__row}>
-									  <div className="col " data-label="Покупець">{item.buyer}</div>
-									  <div className="col " data-label="Продавець">{item.seller}</div>
-									  <div className="col " data-label="Статус Лота">{item.lotStatus}</div>
+										<div className="col " data-label="Покупець">{item.buyer}</div>
+										<div className="col " data-label="Продавець">{item.seller}</div>
+										<div className="col " data-label="Статус Лота">{item.lotStatus}</div>
 
-									  <div className={styles.tooltip}
-									       data-label="Імена учасників">{item.participantNames.length > 0 && item.participantNames[0].name}
-										  {item.participantNames.length > 0 ? <div className={styles.tooltiptext}>
-											  {
+										<div className={styles.tooltip}
+										     data-label="Імена учасників">{item.participantNames.length > 0 && item.participantNames[0].name}
+											{item.participantNames.length > 0 ? <div className={styles.tooltiptext}>
+												{
 													 item.participantNames.length > 0 && item.participantNames.map(item => (
-														  <p key={item.id}>{item.name}</p>
+															<p key={item.id}>{item.name}</p>
 													 ))
-											  }
-										  </div> : "-"}
-									  </div>
+												}
+											</div> : "-"}
+										</div>
 
-									  <div className="col " data-label="Дк">{item.dk}</div>
-									  <div className="col " data-label="Ціна">{item.lotTotalPrice} грн</div>
-								  </li>
-							 ))):<div className={styles.notFound}>Lots Not Found</div>
+										<div className="col " data-label="Дк">{item.dk}</div>
+										<div className="col " data-label="Ціна">{item.lotTotalPrice} грн</div>
+									</li>
+							 ))) : <div className={styles.notFound}>Lots Not Found</div>
 						 }
 					 </ul>
 				 </div>
 				 <LotsSideBar refSidebar={refSidebar} lot={lot} toggleDisplayOff={toggleDisplayOff}/>
 			 </div>
-			 {lots.length > 0 ?			 <LotsPagination
-				  buttonConst={DEFAULT_BUTTON_COUNT}
-				  contentPerPage={PAGE_SIZE}
-				  siblingCount={DEFAULT_SIBLING_COUNT}
-				  currentPage={currentPage}
-				  onSetCurrentPage={setCurrentPage}
-				  totalPageCount={totalPages}
-			 />:null}
+			 {lots.length > 0 ? <LotsPagination
+					buttonConst={DEFAULT_BUTTON_COUNT}
+					contentPerPage={PAGE_SIZE}
+					siblingCount={DEFAULT_SIBLING_COUNT}
+					currentPage={currentPage}
+					onSetCurrentPage={setCurrentPage}
+					totalPageCount={totalPages}
+			 /> : null}
 		 </>
 	);
 };
