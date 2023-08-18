@@ -1,9 +1,9 @@
 import {LotsSideBar} from "../../components/LotsSideBar";
 import styles from "./styles.module.scss"
 import {useEffect, useRef, useState} from "react";
-import {LotsFilters} from "../../components/LotsFilters";
 import {LotsService} from "../../services/LotsService/lots-service";
 import {LotsPagination} from "../../components/LotsPagination";
+import {LotsFilters} from "../../components/LotsFilters";
 
 const PAGE_SIZE = 10;
 const DEFAULT_BUTTON_COUNT = 3;
@@ -52,6 +52,7 @@ export const LotsTable = () => {
 	return (
 		 <>
 			 <div className={styles.wrapper}>
+
 				 <div className={styles.container}>
 					 <LotsFilters
 							setSearch={setSearch}

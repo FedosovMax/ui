@@ -28,6 +28,7 @@ export const LotsFilters = ({setSearch, setSorting, sorting}) => {
 		{name: "lotStatus", value: "Статус Лота", placeholder: "Введіть Статус Лота..."},
 		{name: "dk", value: "Dk", placeholder: "Введіть дк..."},
 		{name: "lotURL", value: " Cилка на лот", placeholder: "Введіть силку на лот..."},
+		{name: "lotTotalPrice"},
 	]
 
 
