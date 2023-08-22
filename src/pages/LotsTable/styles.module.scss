@@ -29,6 +29,59 @@
 		font-size: 14px;
 		text-transform: uppercase;
 		letter-spacing: 0.03em;
+		display: flex;
+		align-items: center;
+		text-align: center;
+
+		h3 {
+			font-size: 13px;
+		}
+
+		div {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.sorting {
+				display: flex;
+				flex-direction: column;
+				margin-right: 5px;
+				cursor: pointer;
+			}
+		}
+	}
+
+	&__filters {
+		background-color: #ffffff;
+		box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+
+		div {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+
+		input {
+			width: 130px;
+			border: none;
+			outline: none;
+			border-bottom: 2px solid #95A5A6;
+			font-size: 14px;
+
+			&::placeholder {
+				font-size: 11px;
+			}
+		}
+
+		.inputPrice {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+
+			input {
+				width: 40%;
+			}
+		}
 	}
 
 	&__row {
@@ -77,4 +130,8 @@
 .tooltip:hover .tooltiptext {
 	visibility: visible;
 	transition: all 0.1s;
+}
+
+.active {
+	color: white;
 }
