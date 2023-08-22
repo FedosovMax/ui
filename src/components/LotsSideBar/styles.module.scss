@@ -1,6 +1,6 @@
 .container {
-	width: 530px;
-	height: 80vh;
+	width: 510px;
+	height: 100vh;
 	background: #ffffff;
 	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.1);
 	margin: 10px;
@@ -15,33 +15,38 @@
 		padding-right: 1rem;
 		cursor: pointer;
 	}
-	.buyer{
+
+	.buyer {
 		margin-bottom: 22px;
-		div{
+
+		div {
 			font-size: 22px;
 			font-weight: bold;
 		}
 	}
 
-	.price{
-		span{
+	.price {
+		span {
 			text-decoration: underline;
 		}
+
 		margin-bottom: 30px;
 	}
 
-	.lotUsers{
-		div{
+	.lotUsers {
+		div {
 			font-size: 15px;
 		}
+
 		margin-bottom: 30px;
 	}
 
-	.links{
+	.links {
 		margin-bottom: 30px;
 	}
-	.burying{
-		div{
+
+	.burying {
+		div {
 			display: grid;
 
 			grid-template-columns: repeat(4, 1fr);

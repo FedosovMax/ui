@@ -1,9 +1,11 @@
 import {LotsSideBar} from "../../components/LotsSideBar";
 import styles from "./styles.module.scss"
 import {useEffect, useRef, useState} from "react";
-import {LotsFilters} from "../../components/LotsFilters";
 import {LotsService} from "../../services/LotsService/lots-service";
 import {LotsPagination} from "../../components/LotsPagination";
+import {TableHeader} from "./TableHeader";
+import {TableBody} from "./TableBody";
+import {TableFilters} from "./TableFilters";
 
 const PAGE_SIZE = 10;
 const DEFAULT_BUTTON_COUNT = 3;
@@ -19,6 +21,15 @@ export const LotsTable = () => {
 	const [lots, setLots] = useState([]);
 	const [sorting, setSorting] = useState({name: "", order: ""});
 	const [search, setSearch] = useState({});
+
+	const columns = [
+		{name: "buyer", value: "Покупець", placeholder: "Введіть Покупця..."},
+		{name: "seller", value: "Продавець", placeholder: "Введіть Продавця..."},
+		{name: "lotStatus", value: "Статус Лота", placeholder: "Введіть Статус Лота..."},
+		{name: "participants", value: " Імена учасників", placeholder: "Імена учасників через комую..."},
+		{name: "dk", value: "Dk", placeholder: "Введіть дк..."},
+		{name: "lotTotalPrice", value: "Ціна"}
+	]
 
 	const fetchLots = async (currentPage) => {
 		try {
@@ -52,48 +63,14 @@ export const LotsTable = () => {
 	return (
 		 <>
 			 <div className={styles.wrapper}>
-				 <div className={styles.container}>
-					 <LotsFilters
-							setSearch={setSearch}
-							setSorting={setSorting}
-							sorting={sorting}/>
 
+				 <div className={styles.container}>
 					 <ul className={styles.responsive_table}>
-						 <li className={styles.responsive_table__header}>
-							 <div className="col ">Покупець</div>
-							 <div className="col ">Продавець</div>
-							 <div className="col ">Статус Лота</div>
-							 <div className="col ">Імена учасників</div>
-							 <div className="col ">Дк</div>
-							 <div className="col">Ціна</div>
-						 </li>
+						 <TableHeader columns={columns} setSorting={setSorting}/>
+						 <TableFilters columns={columns} setSearch={setSearch}/>
 						 {
 							 lots.length > 0 ? (lots.map((item) => (
-									<li
-										 onClick={() => {
-											 toggleDisplay()
-											 setLot(item)
-										 }}
-										 key={item.id}
-										 className={styles.responsive_table__row}>
-										<div className="col " data-label="Покупець">{item.buyer}</div>
-										<div className="col " data-label="Продавець">{item.seller}</div>
-										<div className="col " data-label="Статус Лота">{item.lotStatus}</div>
-
-										<div className={styles.tooltip}
-										     data-label="Імена учасників">{item.participantNames.length > 0 && item.participantNames[0].name}
-											{item.participantNames.length > 0 ? <div className={styles.tooltiptext}>
-												{
-													 item.participantNames.length > 0 && item.participantNames.map(item => (
-															<p key={item.id}>{item.name}</p>
-													 ))
-												}
-											</div> : "-"}
-										</div>
-
-										<div className="col " data-label="Дк">{item.dk}</div>
-										<div className="col " data-label="Ціна">{item.lotTotalPrice} грн</div>
-									</li>
+									<TableBody item={item} setLot={setLot} toggleDisplay={toggleDisplay} colums={columns}/>
 							 ))) : <div className={styles.notFound}>Lots Not Found</div>
 						 }
 					 </ul>

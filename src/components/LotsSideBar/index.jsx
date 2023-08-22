@@ -22,9 +22,6 @@ export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 				 <p>{lot.seller}</p>
 			 </div>
 
-
-
-
 			 <p>Статус: {lot.lotStatus}</p>
 			 <p>ДК: {lot.dk}</p>
 
