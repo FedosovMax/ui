@@ -43,6 +43,8 @@ export const LotsTable = () => {
 	};
 
 
+
+
 	useEffect(() => {
 		fetchLots(currentPage);
 	}, [currentPage, search, sorting]);
@@ -70,7 +72,7 @@ export const LotsTable = () => {
 						 <TableFilters columns={columns} setSearch={setSearch}/>
 						 {
 							 lots.length > 0 ? (lots.map((item) => (
-									<TableBody item={item} setLot={setLot} toggleDisplay={toggleDisplay} colums={columns}/>
+									<TableBody key={item.id} item={item} setLot={setLot} toggleDisplay={toggleDisplay} colums={columns}/>
 							 ))) : <div className={styles.notFound}>Lots Not Found</div>
 						 }
 					 </ul>

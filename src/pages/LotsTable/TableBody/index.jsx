@@ -1,6 +1,6 @@
 import styles from "../styles.module.scss";
 
-export const TableBody = ({toggleDisplay, setLot, item, columns}) => {
+export const TableBody = ({toggleDisplay, setLot, item}) => {
 	return (
 		 <>
 			 <li
@@ -8,7 +8,6 @@ export const TableBody = ({toggleDisplay, setLot, item, columns}) => {
 						toggleDisplay()
 						setLot(item)
 					}}
-					key={item.id}
 					className={styles.responsive_table__row}>
 				 <div>{item.buyer}</div>
 				 <div>{item.seller}</div>
