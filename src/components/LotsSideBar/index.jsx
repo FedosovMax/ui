@@ -15,33 +15,35 @@ export const LotsSideBar = ({refSidebar, lot, toggleDisplayOff}) => {
 
 			 <div className={styles.buyer}>
 				 <div><BiUser/> Покупець:</div>
-				 <p>{lot.buyer}</p>
+				 {lot.buyer !== null ?(<p>{lot.buyer}</p>):"-"}
 			 </div>
 			 <div className={styles.buyer}>
 				 <div><BsBuildings/> Продавець:</div>
-				 <p>{lot.seller}</p>
+				 {lot.seller !== null ?(<p>{lot.seller}</p>):"-"}
 			 </div>
+			 <p>Статус: {lot.lotStatus!==null? lot.lotStatus:"-"}</p>
+			 <p>ДК: {lot.dk!==null? lot.dk:"-"}</p>
+			 {lot.lotTotalPrice !== null? (<div className={styles.price}>Ціна: <span>{lot.lotTotalPrice} грн</span></div>):(<div className={styles.price}>Ціна: -</div>)}
 
-			 <p>Статус: {lot.lotStatus}</p>
-			 <p>ДК: {lot.dk}</p>
-
-			 <div className={styles.price}>Ціна: <span>{lot.lotTotalPrice} грн</span></div>
 
 			 <div className={styles.lotUsers}>
-				 <h3>Учасники Лоту</h3>
-				 {lot.participantNames && lot.participantNames.map(item => (
-						<div key={item.id}>
-							<p><span><BiUser/> Імя:</span> {item.name}</p>
-							<p>Edrpou: {item.edrpou}</p>
-						</div>
-
-				 ))}
+				 <h3>Учасники Лоту:</h3>
+				 {lot.participantNames && lot.participantNames.length > 0 ? (
+					  lot.participantNames.map(item => (
+							 <div key={item.id}>
+								 <p><span><BiUser/> Імя:</span> {item.name}</p>
+								 <p>Edrpou: {item.edrpou}</p>
+							 </div>
+					  ))
+				 ) : (
+					  <div>Невідомо Про Учасників Лоту</div>
+				 )}
 			 </div>
 
 			 <div className={styles.links}>
-				 <h3><AiOutlineLink/> Силки:</h3>
-				 <p> Силка на лот : <Link to={lot.lotURL}> {lot.lotURL}</Link></p>
-				 <p>Силка на pdf : <Link to={lot.pdfURL}> {lot.pdfURL}</Link></p>
+				 <h3><AiOutlineLink/> Посилання:</h3>
+				 <p> Посилання на Лот: {lot.lotUrl !==null ? <Link to={lot.lotURL}> {lot.lotURL}</Link>:"-"}</p>
+				 <p>Посилання на PDF:  {lot.pdfURL !==null ? <Link to={lot.pdfURL}> {lot.pdfURL}</Link>:"-"}</p>
 			 </div>
 			 <div className={styles.burying}>
 				 <h3>Продукція: </h3>
